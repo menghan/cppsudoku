@@ -1,5 +1,6 @@
 #include <iostream>
 #include <fstream>
+#include <vector>
 using namespace std;
 
 
@@ -51,9 +52,22 @@ void Puzzle::init_from_file(const string filename)
         ifile.close();
 }
 
+Puzzle resolve(const Puzzle puzzle)
+{
+        vector<Puzzle> stack;
+        stack.push_back(puzzle);
+        while (!stack.empty()) {
+                Puzzle result = stack.pop_back();
+                return result
+        }
+}
+
 int main(int argv, char *argc[])
 {
         Puzzle p;
         p.init_from_file("puzzle1");
         p.print();
+        cout << "result" << endl;
+        Puzzle result = resolve(p);
+        result.print();
 }
